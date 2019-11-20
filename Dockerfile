@@ -31,6 +31,7 @@ EXPOSE 4040 4041
 
 ENTRYPOINT [ "entrypoint.sh" ]
 
+COPY main.lua /opt/mysql-proxy/conf/main.lua
 
 # For another derived image:
 
