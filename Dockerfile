@@ -3,10 +3,11 @@ LABEL maintainer="BSCheshir <bscheshir.work@gmail.com>"
 
 ENV MYSQL_PROXY_VERSION 0.8.5
 ENV MYSQL_PROXY_TAR_NAME mysql-proxy-$MYSQL_PROXY_VERSION-linux-debian6.0-x86-64bit
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends wget && \
+    apt-get upgrade -y ca-certificates tzdata && \
+    apt-get -y install --no-install-recommends wget && \
     wget https://downloads.mysql.com/archives/get/file/$MYSQL_PROXY_TAR_NAME.tar.gz && \
     tar -xzvf $MYSQL_PROXY_TAR_NAME.tar.gz && \
     mv $MYSQL_PROXY_TAR_NAME /opt/mysql-proxy && \
