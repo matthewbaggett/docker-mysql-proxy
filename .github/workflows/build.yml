@@ -1,0 +1,19 @@
+name: Docker MySQL Proxy
+
+on: [push]
+
+env:
+  DOCKER_TAG: latest
+  DOCKER_IMAGE: docker.pkg.github.com/matthewbaggett/docker-mysql-proxy/docker-mysql-proxy
+
+jobs:
+  Wordpress:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Login to registry
+      run: docker login docker.pkg.github.com -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build the image
+      run: docker build . --file Dockerfile --tag $DOCKER_IMAGE:$DOCKER_TAG
+    - name: Publish image to Registry
+      run: docker push $DOCKER_IMAGE:$DOCKER_TAG
