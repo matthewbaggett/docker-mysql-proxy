@@ -1,12 +1,12 @@
 FROM debian:jessie
 # docker build -t bscheshir/mysql-proxy:0.8.5 .
-MAINTAINER BSCheshir <bscheshir.work@gmail.com>
+LABEL maintainer="BSCheshir <bscheshir.work@gmail.com>"
 
 ENV MYSQL_PROXY_VERSION 0.8.5
 ENV MYSQL_PROXY_TAR_NAME mysql-proxy-$MYSQL_PROXY_VERSION-linux-debian6.0-x86-64bit
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install wget && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends wget && \
     wget https://downloads.mysql.com/archives/get/file/$MYSQL_PROXY_TAR_NAME.tar.gz && \
     tar -xzvf $MYSQL_PROXY_TAR_NAME.tar.gz && \
     mv $MYSQL_PROXY_TAR_NAME /opt/mysql-proxy && \
@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/ && \
     chown -R root:root /opt/mysql-proxy && \
-    echo "#!/bin/bash\n\
+    printf "#!/bin/bash\n\
 \n\
 exec /opt/mysql-proxy/bin/mysql-proxy \\\\\n\
 --keepalive \\\\\n\

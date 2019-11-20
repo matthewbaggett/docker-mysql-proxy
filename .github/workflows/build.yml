@@ -7,7 +7,7 @@ env:
   DOCKER_IMAGE: docker.pkg.github.com/matthewbaggett/docker-mysql-proxy/docker-mysql-proxy
 
 jobs:
-  Wordpress:
+  Build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
