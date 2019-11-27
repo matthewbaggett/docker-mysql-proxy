@@ -1,4 +1,4 @@
-# mysql-proxy
+# MySQL Proxy
 
 # Usage with docker-compose
 
@@ -41,7 +41,7 @@ services:
       MYSQL_USER: dbuser
       MYSQL_PASSWORD: password
   db:
-    image: bscheshir/mysqlproxy:0.8.5
+    image: matthewbaggett/mysql-proxy
     expose:
       - "3306" #for service php
     ports:
