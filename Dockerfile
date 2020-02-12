@@ -20,11 +20,11 @@ RUN apt-get update && \
 \n\
 exec /opt/mysql-proxy/bin/mysql-proxy \\\\\n\
 --keepalive \\\\\n\
---log-level=debug \\\\\n\
+--log-level=error \\\\\n\
 --plugins=proxy \\\\\n\
 --proxy-address=\${PROXY_DB_HOST}:\${PROXY_DB_PORT} \\\\\n\
 --proxy-backend-addresses=\${REMOTE_DB_HOST}:\${REMOTE_DB_PORT} \\\\\n\
---proxy-lua-script=\${LUA_SCRIPT}\n\
+--proxy-lua-script=/opt/mysql-proxy/conf/main.lua\n\
 " >> /usr/local/bin//entrypoint.sh && \
     chmod u+x /usr/local/bin/entrypoint.sh && \
     ln -s /usr/local/bin/docker-entrypoint.sh /entrypoint.sh # shortcut
