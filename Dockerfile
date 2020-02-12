@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get upgrade -y ca-certificates tzdata && \
     apt-get -y install --no-install-recommends wget && \
-    wget https://downloads.mysql.com/archives/get/file/$MYSQL_PROXY_TAR_NAME.tar.gz && \
+    wget https://downloads.mysql.com/archives/get/p/21/file/$MYSQL_PROXY_TAR_NAME.tar.gz && \
     tar -xzvf $MYSQL_PROXY_TAR_NAME.tar.gz && \
     mv $MYSQL_PROXY_TAR_NAME /opt/mysql-proxy && \
     rm $MYSQL_PROXY_TAR_NAME.tar.gz && \
